@@ -41,6 +41,15 @@ public class DaumNewsTodaySeries {
             String todaysSeriesLink = todaysSeriesTag.attr("href");
             System.out.println("NEWS Title : " + todaysSeriesTitle);
             System.out.println("NEWS Link : " + todaysSeriesLink);
+
+        // 240328 기사 가져오기
+        // 1. 기사 페이지 url 설정
+        // 2. 기사 페이지의 html태그를 받을 document 객체 생성
+        // 3. Jsoup.connect()를 사용하여 기사 페이지에 접속
+        // 4. parse()를 사용하여 가져온 html 태그를  document객체에 저장
+        // 5. 기사 내용이 있는 태그를 select()를 사용하여 검색
+        // 6. 기사 내용 가져오기
+
             System.out.println("=================================================");
 
         }
