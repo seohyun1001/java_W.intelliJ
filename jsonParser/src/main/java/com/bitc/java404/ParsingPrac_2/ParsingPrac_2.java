@@ -11,14 +11,20 @@ public class ParsingPrac_2 {
 
         System.out.println("========= TAGO 열차 정보 출력하기 =========");
 
+        // Gsom 라이브러리 사용을 위해
         Gson gson = new Gson();
 
+        // Gson을 사용하여 TagoDTO 클래스 타입으로 Json 문자열 데이터를 파싱
         TagoDTO tago = gson.fromJson(jsonData, TagoDTO.class);
+        // 아래의 부분은 필요없으면 사용하지 않아도 됨
         TagoResponseDTO response = tago.getResponse();
         TagoHeaderDTO header = response.getHeader();
         TagoBodyDTO body = response.getBody();
         TagoItemsDTO items = body.getItems();
         List<TagoItemDTO> itemList = items.getItem();
+
+        // TagoDTO 객체에서 한번에 필요한 데이터만 출력
+        // List<TagoItemDTO> itemDTOList = tago.getResponse().getBody().getItems().getItem();
 
         for (TagoItemDTO item : itemList) {
             System.out.println("열차번호 : " + item.getTrainno());
