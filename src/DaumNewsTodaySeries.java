@@ -54,15 +54,17 @@ public class DaumNewsTodaySeries {
             try {
                 Connection.Response subRes = Jsoup.connect(todaysSeriesLink).method(Connection.Method.GET).execute();
                 subHtml = subRes.parse();
-            } catch (IOException e) {
-                System.out.println("jsoup 사용 중 오류가 발생함");
+            }
+            catch (IOException e) {
+                System.out.println("jsoup 사용 중 오류가 발생했습니다.");
                 e.printStackTrace();
             }
+
             Element subArticle_view = subHtml.select(".article_view").first();
             Elements subNewsPList = subArticle_view.select("p");
             Element subNewsPTag = subNewsPList.get(0);
             String subNews = subNewsPTag.text();
-            System.out.println(subNews);
+            System.out.println("뉴스 내용 : " + subNews);
             System.out.println("=================================================");
 
         }
