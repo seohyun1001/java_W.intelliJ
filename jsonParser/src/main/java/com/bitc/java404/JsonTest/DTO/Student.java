@@ -1,4 +1,4 @@
-package com.bitc.java404.DTO;
+package com.bitc.java404.JsonTest.DTO;
 
 public class Student {
     private int no;

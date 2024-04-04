@@ -1,6 +1,6 @@
-package com.bitc.java404;
+package com.bitc.java404.JsonTest;
 
-import com.bitc.java404.DTO.Student;
+import com.bitc.java404.JsonTest.DTO.Student;
 import com.google.gson.*;
 
 import java.util.HashMap;
@@ -139,6 +139,5 @@ public class GsonTest {
         System.out.println("과목명 : " + sjObjName);
         System.out.println("담당교수 : " + sjobjProfessor);
     }
-
 
 }

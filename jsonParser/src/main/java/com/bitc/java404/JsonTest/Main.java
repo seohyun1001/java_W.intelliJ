@@ -1,6 +1,4 @@
-package com.bitc.java404;
-
-import com.google.gson.Gson;
+package com.bitc.java404.JsonTest;
 
 public class Main {
     public static void main(String[] args) {
