@@ -19,6 +19,11 @@ public class Main {
 
         GsonTest gt = new GsonTest();
         gt.createJson();
-
+        gt.objectToJson();
+        gt.jsonToObject();
+        gt.mapToJson();
+        gt.jsontoMap();
+        System.out.println("==============================================");
+        gt.jsonStringParser();
     }
 }
