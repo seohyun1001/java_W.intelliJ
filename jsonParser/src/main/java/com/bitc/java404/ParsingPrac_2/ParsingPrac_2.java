@@ -1,6 +1,9 @@
 package com.bitc.java404.ParsingPrac_2;
 
+import com.bitc.java404.ParsingPrac_2.DTO.*;
 import com.google.gson.Gson;
+
+import java.util.List;
 
 public class ParsingPrac_2 {
     public void tagoParser() {
@@ -9,6 +12,25 @@ public class ParsingPrac_2 {
         System.out.println("========= TAGO 열차 정보 출력하기 =========");
 
         Gson gson = new Gson();
+
+        TagoDTO tago = gson.fromJson(jsonData, TagoDTO.class);
+        TagoResponseDTO response = tago.getResponse();
+        TagoHeaderDTO header = response.getHeader();
+        TagoBodyDTO body = response.getBody();
+        TagoItemsDTO items = body.getItems();
+        List<TagoItemDTO> itemList = items.getItem();
+
+        for (TagoItemDTO item : itemList) {
+            System.out.println("열차번호 : " + item.getTrainno());
+            System.out.println("열차종류 : " + item.getTraingradename());
+            System.out.println("출발지 : " + item.getDepplacename());
+            System.out.println("출발시간 : " + item.getDepplandtime());
+            System.out.println("도착지 : " + item.getArrplacename());
+            System.out.println("도착시간 : " + item.getArrplandtime());
+            System.out.println("열차운임 : " + item.getAdultcharge());
+            System.out.println("============================================");
+
+        }
 
 
 
