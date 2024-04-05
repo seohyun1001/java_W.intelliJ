@@ -1,4 +1,4 @@
-package com.bitc.java404;
+package com.bitc.java404.databaseParsing;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -1,6 +1,4 @@
-package com.bitc.java404;
-
-import com.mysql.cj.util.StringInspector;
+package com.bitc.java404.databaseParsing;
 
 import java.sql.*;
 
