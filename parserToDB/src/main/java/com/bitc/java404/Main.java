@@ -44,7 +44,8 @@ public class Main {
         dbTest();
 
         ParserToDB parser = new ParserToDB();
-        parser.insertDB();
+//        parser.insertDB();
+        parser.selectDB();
 
 
     }
