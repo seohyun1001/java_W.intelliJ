@@ -5,7 +5,10 @@ import com.bitc.java404.ParsingXml.DTO.PharmacyItemDTO;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.Unmarshaller;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 
 public class xmlParsing {
@@ -36,6 +39,44 @@ public class xmlParsing {
             System.out.println("주소 : " + item.getDutyAddr());
             System.out.println("시작 시간 : " +item.getDutyTime1s());
             System.out.println("종료 시간 : " + item.getDutyTime1c());
+            System.out.println("========================================");
+        }
+    }
+
+
+
+    public void xmlToObjectUrl(String serviceUrl) throws Exception{
+        List<PharmacyItemDTO> itemList = null;
+
+        URL url = null;
+        HttpURLConnection urlConn = null;
+
+        try {
+            url = new URL(serviceUrl);
+            urlConn = (HttpURLConnection) url.openConnection();
+            urlConn.setRequestMethod("GET");
+
+            JAXBContext jc = JAXBContext.newInstance(PharmacyDTO.class);
+            Unmarshaller um = jc.createUnmarshaller();
+
+            PharmacyDTO pharmacy = (PharmacyDTO) um.unmarshal(url);
+            itemList = pharmacy.getBody().getItems().getItem();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        } finally {
+            if (urlConn != null) { urlConn.disconnect();}
+        }
+
+        System.out.println("\n =========== 전국 약국 정보(url) =========== \n");
+        for (PharmacyItemDTO item : itemList) {
+            System.out.println("약국 이름 : " + item.getDutyName());
+            System.out.println("전화번호 : " + item.getDutyTel1());
+            System.out.println("주소 : " + item.getDutyAddr());
+            System.out.println("시작 시간 : " +item.getDutyTime1s());
+            System.out.println("종료 시간 : " + item.getDutyTime1c());
+            System.out.println("=======================================");
         }
 
     }
