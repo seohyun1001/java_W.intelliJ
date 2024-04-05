@@ -122,6 +122,7 @@ public class ParserToDB {
             System.out.println("Exception : " + e.getMessage());
         } finally {
             try{
+                // the order to close is the opposite order opened
                 if (rs != null) {rs.close();}
                 if (stmt != null) {stmt.close();}
                 if (conn != null) {conn.close();}
@@ -131,5 +132,95 @@ public class ParserToDB {
             }
         }
 
+    }
+
+    public void deleteDB(String userID) {
+        Connection conn = null;
+
+        String dbUrl = "jdbc:mysql://localhost:3306/testdb";
+        String dbUser = "java404";
+        String dbPass = "java404";
+
+        Statement stmt = null;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection(dbUrl,dbUser,dbPass);
+
+            String sql = "delete from member where user_id = '" + userID + "' ";
+
+            stmt = conn.createStatement();
+            int result = stmt.executeUpdate(sql);
+            if (result > 0) {
+                System.out.println("delete" + result + " data(s)");
+            } else {
+                System.out.println("No deleted data");
+            }
+
+
+        } catch (SQLException e) {
+            System.out.println("ERROR");
+            System.out.println("SQLException : " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Exception : " + e.getMessage());
+
+        } finally {
+            try {
+                if (stmt != null) {stmt.close();}
+                if (conn != null) {conn.close();}
+
+            } catch (Exception e){
+
+            }
+        }
+    }
+
+
+
+    public void updateDB() {
+        Connection conn = null;
+        String dbUrl = "jdbc:mysql://localhost:3306/testdb";
+        String dbUser = "java404";
+        String dbPass = "java404";
+
+        PreparedStatement pstmt = null;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection(dbUrl,dbUser,dbPass);
+
+            String sql = "update member set ";
+            sql += "user_name = ?, user_email = ?, user_phone = ? ";
+            sql += "where user_id = ? ";
+
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, "tester_01");
+            pstmt.setString(2, "test1@gmail.com");
+            pstmt.setString(3, "01010012002");
+            pstmt.setString(4, "test1");
+
+            int result = pstmt.executeUpdate();
+
+            if (result > 0) {
+                System.out.println("update " + result + " data(s)");
+            } else {
+                System.out.println("No updated data");
+            }
+        } catch (SQLException e) {
+            System.out.println("ERROR");
+            System.out.println("SQLException : " + e.getMessage());
+
+        } catch (Exception e) {
+            System.out.println("Exception : " + e.getMessage());
+
+        } finally {
+            try {
+                if (pstmt != null) {pstmt.close();}
+                if (conn != null) {conn.close();}
+
+            } catch (Exception e){
+
+            }
+        }
     }
 }

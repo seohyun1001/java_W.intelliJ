@@ -46,6 +46,12 @@ public class Main {
         ParserToDB parser = new ParserToDB();
 //        parser.insertDB();
         parser.selectDB();
+        System.out.println("=========== delete data 'test3' ===========");
+        parser.deleteDB("test3");
+        parser.selectDB();
+        System.out.println("=========== update data 'test1' ===========");
+        parser.updateDB();
+        parser.selectDB();
 
 
     }
