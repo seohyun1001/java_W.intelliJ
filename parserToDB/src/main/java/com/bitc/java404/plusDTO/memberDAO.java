@@ -1,11 +1,66 @@
 package com.bitc.java404.plusDTO;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class memberDAO {
+
+    public void selectDB() {
+        Connection conn = null;
+
+        String dbUrl = "jdbc:mysql://localhost:3306/testdb?characterEncoding=utf8&serverTimezone=UTC";
+        String dbUser = "java404";
+        String dbPass = "java404";
+
+        Statement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection(dbUrl,dbUser,dbPass);
+
+            String sql = "select * from member";
+
+            stmt = conn.createStatement();
+
+            rs = stmt.executeQuery(sql);
+
+            while (rs.next()) {
+                String userID = rs.getString("user_id");
+                String userPw = rs.getString("user_pw");
+                String userName = rs.getString("user_name");
+                String userEmail = rs.getString("user_email");
+                String userPhone = rs.getString("user_phone");
+                String userAddr = rs.getString("user_addr");
+
+                System.out.println("ID : " + userID);
+                System.out.println("PW : " + userPw);
+                System.out.println("Name : " + userName);
+                System.out.println("Email : " + userEmail);
+                System.out.println("Phone : " + userPhone);
+                System.out.println("Address : " + userAddr);
+                System.out.println("=======================================");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("ERROR");
+            System.out.println("SQLException : " + e.getMessage());
+        } catch (Exception e){
+            System.out.println("Exception : " + e.getMessage());
+        } finally {
+            try{
+                if (rs != null) {rs.close();}
+                if (stmt != null) {stmt.close();}
+                if (conn != null) {conn.close();}
+
+            } catch (Exception e){
+
+            }
+        }
+
+    }
+
+
+
 
     public void insertDB(memberDTO member) {
 
