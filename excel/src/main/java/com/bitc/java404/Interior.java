@@ -28,7 +28,7 @@ public class Interior {
 
             int rowLength = sheet.getPhysicalNumberOfRows();
 
-            for (rowNo = 1; rowNo < 11; rowNo++) {
+            for (rowNo = 1; rowNo < rowLength; rowNo++) {
                 XSSFRow row = sheet.getRow(rowNo);
 
                 if (row != null) {
