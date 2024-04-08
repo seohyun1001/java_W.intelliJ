@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class Interior {
-    public void interiotList(String fileName){
+    public void interiorList(String fileName){
 
         InputStream fis = null;
         XSSFWorkbook workbook = null;
@@ -81,4 +81,11 @@ public class Interior {
             } catch (Exception e){}
         }
     }
+
+
+
+    public void interiorListToDB(String fileName){
+
+    }
+
 }

@@ -9,7 +9,7 @@ public class Main {
 
 
 //        Interior interior = new Interior();
-//        interior.interiotList("C:/java404/interior.xlsx");
+//        interior.interiorList("C:/java404/interior.xlsx");
 
 //        Cultural c = new Cultural();
 //        c.CulturalList("C:/java404/cultural.xls");
